@@ -5,6 +5,8 @@ import { useScrollSequence } from "@/hooks/useScrollSequence";
 import { getOptimalFrameCount } from "@/utils/deviceDetection";
 import ParticleLayer from "./ParticleLayer";
 import PropertySearch from "./PropertySearch";
+import SplitText from "./SplitText";
+import CuratedListings from "./CuratedListings";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,7 +32,6 @@ export default function ScrollSection({
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
   const fallbackRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -62,9 +63,8 @@ export default function ScrollSection({
     const section = sectionRef.current;
     const fallback = fallbackRef.current;
     const content = contentRef.current;
-    const overlay = overlayRef.current;
 
-    if (!section || !content || !overlay) return;
+    if (!section || !content) return;
 
     // Fallback video observer (only if scroll sequence fails to load)
     if (fallback) {
@@ -117,22 +117,6 @@ export default function ScrollSection({
       );
       }
 
-      // Animate overlay opacity (only for first section with overlay)
-      if (index === 0) {
-      gsap.fromTo(
-        overlay,
-        { opacity: 0.7 },
-        {
-          opacity: 0.3,
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "+=100%",
-            scrub: 1,
-          },
-        }
-      );
-      }
 
       // Text animations - different behavior for first vs scroll snap sections
       if (index === 0) {
@@ -352,11 +336,6 @@ export default function ScrollSection({
         intensity={index === 1 ? 1 : index === 0 ? 0.6 : 0.8} // Peak particles in middle section
       />
 
-      {/* Dark Overlay */}
-      <div
-        ref={overlayRef}
-        className="absolute inset-0 bg-black/70 cinematic-overlay"
-      />
 
       {/* Content */}
       <div
@@ -371,25 +350,75 @@ export default function ScrollSection({
         ) : index === 0 ? (
           // First section: Show nothing when scroll progress < 70% (no original content)
           <div></div>
+        ) : index === 1 ? (
+          // Section 2: Show SplitText with ORTUS content
+          <div className="max-w-5xl text-center">
+            <SplitText
+              text="Your bespoke living to disconnect & reconnect"
+              tag="h2"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight mb-8"
+              splitType="words"
+              delay={150}
+              duration={0.8}
+              ease="power3.out"
+              from={{ opacity: 0, y: 60, rotationX: 90 }}
+              to={{ opacity: 1, y: 0, rotationX: 0 }}
+              threshold={0.2}
+              rootMargin="-50px"
+              textAlign="center"
+            />
+            
+            <div className="max-w-3xl mx-auto">
+              <SplitText
+                text="ORTUS is a discreet real estate investment firm serving ultra-high-net-worth individuals. We operate like a private bank for real estate - each client is carefully vetted, each opportunity is curated, and each transaction is managed with ultra precision. No mass listings. No open houses. Just intelligent acquisitions for those who live in rare air."
+                tag="p"
+                className="text-lg md:text-xl text-gray-800 leading-relaxed mb-8"
+                splitType="words"
+                delay={30}
+                duration={0.6}
+                ease="power2.out"
+                from={{ opacity: 0, y: 30, scale: 0.9 }}
+                to={{ opacity: 1, y: 0, scale: 1 }}
+                threshold={0.3}
+                rootMargin="-100px"
+                textAlign="center"
+              />
+              
+              <div className="mt-12">
+                <a 
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-800 transition-colors duration-300"
+                >
+                  CONTACT US
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ) : index === 2 ? (
+          // Section 3: Show Curated Listings
+          <CuratedListings />
         ) : (
           // Other sections: Show original content
           <div className="max-w-4xl text-center">
             <p 
               ref={subtitleRef}
-              className="text-sm md:text-base tracking-[0.3em] uppercase text-muted-foreground mb-4 opacity-80"
+              className="text-sm md:text-base tracking-[0.3em] uppercase text-gray-600 mb-4 opacity-80"
             >
               {subtitle}
             </p>
             <h2 
               ref={titleRef}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-glow"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-black"
             >
               {title}
             </h2>
             {description && (
               <p 
                 ref={descriptionRef}
-                className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed"
+                className="text-lg md:text-xl text-gray-800 max-w-2xl mx-auto leading-relaxed"
               >
                 {description}
               </p>

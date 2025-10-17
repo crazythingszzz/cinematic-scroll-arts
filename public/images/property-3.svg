@@ -1,0 +1,14 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="300" fill="#F0F8FF"/>
+<rect x="100" y="80" width="200" height="180" fill="#D2B48C"/>
+<rect x="120" y="100" width="30" height="20" fill="#FFFFFF"/>
+<rect x="160" y="100" width="30" height="20" fill="#FFFFFF"/>
+<rect x="200" y="100" width="30" height="20" fill="#FFFFFF"/>
+<rect x="240" y="100" width="30" height="20" fill="#FFFFFF"/>
+<rect x="120" y="130" width="30" height="20" fill="#FFFFFF"/>
+<rect x="160" y="130" width="30" height="20" fill="#FFFFFF"/>
+<rect x="200" y="130" width="30" height="20" fill="#FFFFFF"/>
+<rect x="240" y="130" width="30" height="20" fill="#FFFFFF"/>
+<circle cx="200" cy="200" r="25" fill="#87CEEB"/>
+<text x="200" y="205" text-anchor="middle" fill="#FFFFFF" font-size="12" font-family="Arial">Palm Trees</text>
+</svg>

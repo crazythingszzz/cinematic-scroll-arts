@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function FinalSection() {
+export default function SecondFinalSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const leftContentRef = useRef<HTMLDivElement>(null);
   const rightImageRef = useRef<HTMLDivElement>(null);
@@ -87,13 +87,13 @@ export default function FinalSection() {
               ref={titleRef}
               className="text-5xl md:text-6xl lg:text-7xl font-serif font-light leading-tight"
             >
-              The <em className="italic text-gray-800">penthouse</em>
+              The <em className="italic text-gray-800">villa</em>
             </h2>
             <p
               ref={descriptionRef}
               className="text-lg md:text-xl text-gray-600 leading-relaxed"
             >
-              At the very top, life takes on a different rhythm. Wrapped in glass and kissed by the sky, ORTUS penthouses offer panoramic views, expansive terraces, and bespoke interiors — a rarefied world above it all, designed for those who dwell in distinction.
+              A world of your own — surrounded by space, serenity, and stature. Villa living at ORTUS is where architecture meets privacy, and every corner is a celebration of timeless luxury and effortless elegance. A true sanctuary crafted for those who lead life on their own terms.
             </p>
             <button
               ref={buttonRef}
@@ -109,7 +109,7 @@ export default function FinalSection() {
         <div ref={rightImageRef} className="w-3/5 relative h-screen">
           <div className="relative w-full h-full">
             <img 
-              src="/images/Mask group (6).png" 
+              src="/images/Mask group (7).png" 
               alt="Luxury penthouse with infinity pool and Dubai Marina skyline"
               className="w-full h-full object-cover"
             />

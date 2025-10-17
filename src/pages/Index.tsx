@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import useLenisScroll from "@/hooks/useLenisScroll";
 import ScrollSection from "@/components/ScrollSection";
 import FinalSection from "@/components/FinalSection";
+import SecondFinalSection from "@/components/SecondFinalSection";
+import ThirdFinalSection from "@/components/ThirdFinalSection";
 import Header from "@/components/Header";
 import PropertySearch from "@/components/PropertySearch";
 
@@ -9,21 +11,6 @@ const Index = () => {
   useLenisScroll();
   const [firstSectionProgress, setFirstSectionProgress] = useState(0);
   const [isInFirstSection, setIsInFirstSection] = useState(true);
-
-  // Debug scroll snap
-  useEffect(() => {
-    const scrollSnapContainer = document.querySelector('.scroll-snap-y-mandatory');
-    if (scrollSnapContainer) {
-      console.log('Scroll snap container found:', scrollSnapContainer);
-      console.log('Container styles:', {
-        height: getComputedStyle(scrollSnapContainer).height,
-        overflowY: getComputedStyle(scrollSnapContainer).overflowY,
-        scrollSnapType: getComputedStyle(scrollSnapContainer).scrollSnapType
-      });
-    } else {
-      console.log('Scroll snap container NOT found');
-    }
-  }, []);
 
   // Calculate header visibility: visible when frame 200 out of 320 is reached (62.5%)
   // Frame 200/320 = 0.625, so we trigger at 62.5% progress
@@ -48,9 +35,9 @@ const Index = () => {
     },
     {
       videoSrc: "/videos/ortus3.mp4",
-      title: "Discover the Moment",
+      title: "Your Bespoke Living",
       subtitle: "Chapter Two",
-      description: "Immerse yourself in the cinematic experience of seamless transitions.",
+      description: "A journey through light and motion, where every frame tells a story.",
     },
     {
       videoSrc: "/videos/ortus4.mp4",
@@ -63,7 +50,7 @@ const Index = () => {
   return (
     <>
       <Header isVisible={isHeaderVisible} />
-      <main className="relative w-full scroll-snap-y-mandatory">
+      <main className="relative w-full">
         {/* First section - no scroll snap */}
         <ScrollSection
           key={0}
@@ -90,6 +77,8 @@ const Index = () => {
           />
         ))}
         <FinalSection />
+        <SecondFinalSection />
+        <ThirdFinalSection />
       </main>
     </>
   );

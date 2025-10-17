@@ -5,27 +5,9 @@
 /* Scroll Snap Configuration */
 main {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 
-/* Scroll snap container for sections 2-4 and final section */
-.scroll-snap-y-mandatory {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-/* Ensure scroll snap works properly */
-.scroll-snap-align-start {
-  scroll-snap-align: start;
-}
-
-.scroll-snap-align-none {
-  scroll-snap-align: none;
-}
-
-.scroll-snap-stop-always {
-  scroll-snap-stop: always;
-}
+/* Scroll snap utilities - removed as no longer needed */
 
 /* Scroll sequence optimizations */
 canvas {
@@ -82,9 +64,6 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
-    /* Cinematic overlay */
-    --overlay-dark: 0 0% 0%;
-    --overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
     
     /* Transitions */
     --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -117,9 +96,6 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  .cinematic-overlay {
-    background: var(--overlay-gradient);
-  }
   
   .text-glow {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
