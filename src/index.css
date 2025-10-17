@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scroll Snap Configuration */
+main {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+/* Scroll snap container for sections 2-4 and final section */
+.scroll-snap-y-mandatory {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Ensure scroll snap works properly */
+.scroll-snap-align-start {
+  scroll-snap-align: start;
+}
+
+.scroll-snap-align-none {
+  scroll-snap-align: none;
+}
+
+.scroll-snap-stop-always {
+  scroll-snap-stop: always;
+}
+
+/* Scroll sequence optimizations */
+canvas {
+  will-change: transform, opacity;
+  image-rendering: optimizeQuality;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  canvas {
+    will-change: auto;
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -79,5 +123,71 @@ All colors MUST be HSL.
   
   .text-glow {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  
+/* Fade in up animation for search interface */
+.animate-fade-in-up {
+  animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Fade out animation for search interface */
+.animate-fade-out {
+  animation: fadeOut 0.8s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth outro animation */
+.animate-outro {
+  animation: outro 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    60% {
+      opacity: 0.8;
+      transform: translateY(-5px) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+  }
+  
+  @keyframes outro {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    30% {
+      opacity: 0.9;
+      transform: translateY(-5px) scale(1.01);
+    }
+    70% {
+      opacity: 0.4;
+      transform: translateY(-15px) scale(0.98);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.95);
+    }
   }
 }
