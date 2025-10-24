@@ -7,7 +7,66 @@ main {
   scroll-behavior: smooth;
 }
 
-/* Scroll snap utilities - removed as no longer needed */
+/* Custom scroll snap utilities */
+.scroll-snap-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.scroll-snap-section {
+  scroll-snap-align: start;
+  height: 100vh;
+  position: relative;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll-snap section animation states */
+.scroll-snap-section.entering {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+}
+
+.scroll-snap-section.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-snap-section.exiting {
+  opacity: 0.3;
+  transform: translateY(-20px) scale(1.02);
+}
+
+/* Staggered animations for section content */
+.section-content {
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.1s;
+}
+
+.section-content.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-content.animate-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.section-image {
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.3s;
+}
+
+.section-image.animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.section-image.animate-out {
+  opacity: 0;
+  transform: scale(1.05);
+}
 
 /* Scroll sequence optimizations */
 canvas {

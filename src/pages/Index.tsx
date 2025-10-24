@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import useLenisScroll from "@/hooks/useLenisScroll";
 import ScrollSection from "@/components/ScrollSection";
-import FinalSection from "@/components/FinalSection";
-import SecondFinalSection from "@/components/SecondFinalSection";
-import ThirdFinalSection from "@/components/ThirdFinalSection";
 import Header from "@/components/Header";
 import PropertySearch from "@/components/PropertySearch";
 
@@ -50,7 +47,7 @@ const Index = () => {
   return (
     <>
       <Header isVisible={isHeaderVisible} />
-      <main className="relative w-full">
+      <main className="relative w-full scroll-snap-y-mandatory">
         {/* First section - no scroll snap */}
         <ScrollSection
           key={0}
@@ -76,9 +73,6 @@ const Index = () => {
             showSearchInterface={false}
           />
         ))}
-        <FinalSection />
-        <SecondFinalSection />
-        <ThirdFinalSection />
       </main>
     </>
   );

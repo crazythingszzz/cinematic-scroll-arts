@@ -1,0 +1,30 @@
+[33mcommit 2fc102feae758a979e1a08aeac6ab90dae4a862e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: crazythingszzz <crazythingszzz@gmail.com>
+Date:   Sat Oct 18 01:09:34 2025 +0500
+
+    Added fade transition and GSAP fixes
+
+bun.lockb
+package-lock.json
+package.json
+public/images/Mask group (3).png
+public/images/Mask group (4).png
+public/images/Mask group (5).png
+public/images/Mask group (6).png
+public/images/Mask group (7).png
+public/images/Mask group (8).png
+public/images/property-1.svg
+public/images/property-2.svg
+public/images/property-3.svg
+public/images/property-4.svg
+src/components/AnimatedContent.tsx
+src/components/CuratedListings.tsx
+src/components/FinalSection.tsx
+src/components/PropertyCard.tsx
+src/components/ScrollSection.tsx
+src/components/ScrollStack.tsx
+src/components/SecondFinalSection.tsx
+src/components/SplitText.tsx
+src/components/ThirdFinalSection.tsx
+src/index.css
+src/pages/Index.tsx
